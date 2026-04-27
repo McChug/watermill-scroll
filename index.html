@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Watermill Scroll</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <h1>Watermill Scroll</h1>
+        <p>
+          This demo replaces normal browser scrolling with the watermill on the
+          right. Drag the hose, let the water hit the wheel, and the page will
+          move.
+        </p>
+      </header>
+
+      <main class="content">
+        <section>
+          <h2>How it works</h2>
+          <p>
+            The hose hangs in the fixed column and can be dragged around inside
+            it. While you hold the nozzle, water particles stream out, collide
+            with the mill, and turn that motion into page scroll.
+          </p>
+        </section>
+
+        <section>
+          <h2>Interaction</h2>
+          <p>
+            Pull the nozzle lower for a stronger stream. Water hitting the right
+            side of the mill turns it one way and scrolls down. Water hitting
+            the left side turns it back and scrolls up.
+          </p>
+          <p>
+            If you try to use the mouse wheel or keyboard instead, the page
+            shows a reminder to use the hose.
+          </p>
+        </section>
+
+        <section>
+          <h2>Demo content</h2>
+          <p>
+            This page is intentionally long so the custom scroll behavior has
+            room to breathe. The content is plain on purpose and meant only to
+            support testing the widget.
+          </p>
+        </section>
+
+        <section>
+          <h2>Ancient Origins: The Greek and Roman Wheels</h2>
+          <p>
+            The earliest recorded watermills dates back to the 3rd century BCE,
+            appearing in the Hellenistic period. These initial designs were
+            <strong>horizontal wheels</strong>, often called "Norse mills,"
+            which featured a simple paddle wheel connected directly to a
+            millstone.
+          </p>
+          <p>
+            The Romans later perfected the <strong>vertical wheel</strong> using
+            gears to transfer power. This leap in engineering, famously
+            described by Vitruvius, allowed for much higher torque and
+            efficiency, paving the way for large-scale flour production across
+            the Roman Empire.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Domesday Book and Medieval Proliferation</h2>
+          <p>
+            Following the fall of Rome, watermill technology didn't vanish; it
+            flourished. By the time of the <strong>Domesday Book</strong> in
+            1086, England alone recorded over 6,000 active watermills. They
+            became the heart of the medieval manorial economy.
+          </p>
+          <p>
+            During this era, the "overshot" wheel became more common. By using
+            gravity to pull water down onto the buckets of a wheel from above,
+            millers could generate significantly more power than the traditional
+            "undershot" design used in fast-flowing rivers.
+          </p>
+        </section>
+
+        <section>
+          <h2>Diversification of Use: Beyond Grain</h2>
+          <p>
+            By the 12th and 13th centuries, watermills were no longer just for
+            grinding corn. Engineers adapted the <strong>camshaft</strong> to
+            convert rotary motion into reciprocal motion. This led to the
+            creation of fulling mills for textiles, forge mills for ironworking,
+            and sawmills for timber.
+          </p>
+          <p>
+            This period marked the first real "industrial revolution," where
+            human and animal labor were systematically replaced by hydraulic
+            power, fundamentally changing the landscape of European
+            manufacturing and labor.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Industrial Revolution and the Iron Wheel</h2>
+          <p>
+            In the 18th century, John Smeaton applied scientific principles to
+            watermill design, proving through experimentation that
+            <strong>overshot wheels</strong> were far more efficient than
+            undershot ones. This led to the construction of massive iron wheels
+            that powered the early textile giants of the North of England.
+          </p>
+          <p>
+            The watermill provided the bridge to the modern age. Even as steam
+            engines began to take over, massive water-powered sites like Quarry
+            Bank Mill demonstrated the sheer scale of energy that could be
+            harvested from a controlled river.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Transition to Hydroelectric Power</h2>
+          <p>
+            The final chapter in the history of the watermill is its evolution
+            into the <strong>water turbine</strong>. In the mid-19th century,
+            engineers like Benoît Fourneyron developed enclosed turbines that
+            could spin at high speeds with incredible efficiency.
+          </p>
+          <p>
+            This technology directly evolved into the hydroelectric dams we see
+            today. While the quaint wooden wheel in the river has mostly become
+            a relic of heritage, the fundamental principle of capturing the
+            kinetic energy of falling water remains a cornerstone of global
+            renewable energy.
+          </p>
+        </section>
+
+        <section>
+          <h2>More reading</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+            feugiat, tortor sed viverra pulvinar, tellus turpis semper sapien,
+            ut facilisis nisi risus id velit. Donec condimentum, turpis sed
+            tempus faucibus, lorem leo suscipit turpis, et posuere nisl lectus
+            quis lorem.
+          </p>
+          <p>
+            Integer euismod, justo a feugiat efficitur, turpis risus ultrices
+            nunc, sit amet malesuada mi nisl vitae arcu. Sed at luctus mauris.
+            Pellentesque habitant morbi tristique senectus et netus et malesuada
+            fames ac turpis egestas.
+          </p>
+        </section>
+
+        <section>
+          <h2>Even more reading</h2>
+          <p>
+            Curabitur gravida ipsum sed erat tempor, vitae eleifend massa
+            luctus. Aliquam et enim non nibh iaculis tincidunt. Phasellus sit
+            amet turpis feugiat, vulputate lectus vel, malesuada ipsum. Cras
+            gravida nunc at purus pretium lacinia.
+          </p>
+        </section>
+
+        <section>
+          <h2>Notes</h2>
+          <p>
+            The widget uses a single canvas for rendering and Matter.js for hose
+            and particle simulation. The page disables native scrolling while
+            the demo is active.
+          </p>
+          <p>
+            Resize the window to see the column switch to the smaller floating
+            layout.
+          </p>
+        </section>
+
+        <section>
+          <h2>Implementation details</h2>
+          <p>
+            The script tracks its event listeners, supports full teardown
+            through `destroy()`, and rebuilds the simulation when the layout
+            changes.
+          </p>
+        </section>
+
+        <section>
+          <h2>End of page</h2>
+          <p>
+            Keep dragging the hose to reach the bottom. This last section is
+            here mostly to make sure the mill has enough distance to scroll
+            through.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <div id="watermill-column" aria-hidden="true"></div>
+    <div id="wm-hint" class="wm-hint" aria-hidden="true">
+      <img src="./assets/hint-overlay.svg" alt="" role="presentation" />
+      <p>Drag the hose to scroll</p>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./WatermillScroll.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        if (!window.WatermillScroll) {
+          console.error("WatermillScroll class is unavailable.");
+          return;
+        }
+
+        window.watermillScroll = new window.WatermillScroll({
+          columnWidth: "clamp(180px, 18vw, 220px)",
+          smallScreenBreakpoint: 640,
+          scrollSensitivity: 8,
+          maxParticles: 300,
+          maxScrollDeltaPerFrame: 60,
+          angularDamping: 0.95,
+          waterColor: "#5aabff",
+          woodColor: "#8b5e3c",
+          hoseColor: "#4a7c4e",
+          hintText: "Drag the hose to scroll",
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+:root {
+  --wm-column-width: clamp(180px, 18vw, 220px);
+  --wm-small-column-width: 100vw;
+  --wm-small-column-height: 100dvh;
+  --wm-border-color: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #111;
+  background: #fff;
+  container-type: inline-size;
+}
+
+html.watermill-active-root,
+body.watermill-active {
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+html.watermill-active-root {
+  scrollbar-width: none;
+}
+
+html.watermill-active-root::-webkit-scrollbar,
+body.watermill-active::-webkit-scrollbar {
+  display: none;
+}
+
+body.wm-small-layout {
+  --wm-column-width: var(--wm-small-column-width);
+}
+
+.page-shell {
+  container-type: inline-size;
+  min-height: 100vh;
+  padding: 1rem;
+  padding-right: calc(var(--wm-column-width) + 1rem);
+}
+
+body.wm-small-layout .page-shell {
+  padding-right: 1rem;
+}
+
+.site-header {
+  margin-bottom: 2rem;
+}
+
+.site-header h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+}
+
+.site-header p {
+  margin: 0;
+  max-width: 48rem;
+  line-height: 1.5;
+}
+
+.content {
+  max-width: 48rem;
+}
+
+.content section {
+  margin-bottom: 2rem;
+}
+
+.content h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+.content p {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+#watermill-column {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--wm-column-width);
+  height: 100vh;
+  z-index: 40;
+  border-left: 1px solid var(--wm-border-color);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+body.wm-small-layout #watermill-column {
+  left: 0;
+  top: auto;
+  bottom: 0;
+  width: var(--wm-small-column-width);
+  height: var(--wm-small-column-height);
+  opacity: 1;
+  border-left: 0;
+  border-top: 0;
+  background: transparent;
+}
+
+#watermill-column canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wm-hint {
+  position: fixed;
+  top: 50%;
+  left: calc(50% - (var(--wm-column-width) * 0.5));
+  transform: translate(-50%, -50%);
+  z-index: 90;
+  width: min(280px, calc(100vw - 2rem));
+  padding: 1rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #111;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+
+.wm-hint.visible {
+  opacity: 1;
+  transition-duration: 300ms;
+}
+
+.wm-hint img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wm-hint p {
+  margin: 0.75rem 0 0;
+}
+
+body.wm-small-layout .wm-hint {
+  top: auto;
+  right: auto;
+  bottom: calc(var(--wm-small-column-height) + 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@container (max-width: 640px) {
+  .page-shell {
+    padding-bottom: 1rem;
+  }
+}
