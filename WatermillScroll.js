@@ -5,7 +5,7 @@
     desktopColumnWidthCss: "clamp(180px, 18vw, 220px)", // css length: default desktop column width for the fixed sidebar.
     smallScreenBreakpointPx: 640, // px: viewport width where the floating overlay layout activates.
     smallScreenColumnWidthCss: "100vw", // css length: overlay width on small screens so the widget spans the page width.
-    smallScreenColumnHeightCss: "100dvh", // css length: fallback overlay height on small screens when live visual viewport metrics are unavailable.
+    smallScreenColumnHeightCss: "100lvh", // css length: small-screen overlay height that stays pinned to the full viewport, including behind iOS Safari chrome.
     resizeDebounceMs: 150, // ms: delay before rebuilding the world after resize settles.
     engineGravityY: 0.62, // px/frame^2: vertical gravity strength used by Matter.js.
     hoseLinkCount: 16, // count: number of linked hose segments including the nozzle body.
@@ -92,6 +92,15 @@
     hoseColor: "#4a7c4e",
     hintText: "Drag the hose to scroll",
   };
+  const BLOCKED_SCROLL_KEYS = new Set([
+    "ArrowDown",
+    "ArrowUp",
+    "PageDown",
+    "PageUp",
+    "Home",
+    "End",
+    "Space",
+  ]);
 
   class WatermillScroll {
     constructor(options = {}) {
@@ -186,8 +195,7 @@
 
       this.canvas = canvas;
       this.context = context;
-      this.columnElement.innerHTML = "";
-      this.columnElement.appendChild(this.canvas);
+      this.columnElement.replaceChildren(this.canvas);
       this.syncHintText();
     }
 
@@ -648,7 +656,7 @@
     }
 
     handlePointerStart(event) {
-      if (!this.worldReady) {
+      if (!this.worldReady || this.activePointerId !== null) {
         return;
       }
 
@@ -708,9 +716,7 @@
         return;
       }
 
-      this.isHolding = false;
-      this.pointer.active = false;
-      this.activePointerId = null;
+      this.releasePointer();
     }
 
     isMatchingPointerEnd(event) {
@@ -729,16 +735,7 @@
     }
 
     handleKeyScrollAttempt(event) {
-      const blockedKeys = [
-        "ArrowDown",
-        "ArrowUp",
-        "PageDown",
-        "PageUp",
-        "Home",
-        "End",
-        "Space",
-      ];
-      if (!blockedKeys.includes(event.code)) {
+      if (!BLOCKED_SCROLL_KEYS.has(event.code)) {
         return;
       }
 
@@ -783,6 +780,12 @@
 
     clearTouchScrollStart() {
       this.touchScrollStart = null;
+    }
+
+    releasePointer() {
+      this.isHolding = false;
+      this.pointer.active = false;
+      this.activePointerId = null;
     }
 
     showHint() {
@@ -1369,15 +1372,14 @@
       ctx.translate(center.x, center.y);
       ctx.rotate(angle);
       ctx.fillStyle = this.options.woodColor;
-      ctx.beginPath();
-      ctx.roundRect(
+      this.fillRoundedRect(
+        ctx,
         -paddle.width / 2,
         -paddle.height / 2,
         paddle.width,
         paddle.height,
         CONFIG.wheelPaddleCornerRadiusPx,
       );
-      ctx.fill();
       ctx.restore();
     }
 
@@ -1444,6 +1446,7 @@
 
     destroy() {
       this.isDestroyed = true;
+      this.releasePointer();
       this.stopLoop();
       this.removeTrackedListeners();
       this.disconnectResizeObserver();
@@ -1520,6 +1523,34 @@
 
     randomRange(min, max) {
       return min + Math.random() * (max - min);
+    }
+
+    fillRoundedRect(ctx, x, y, width, height, radius) {
+      if (typeof ctx.roundRect === "function") {
+        ctx.beginPath();
+        ctx.roundRect(x, y, width, height, radius);
+        ctx.fill();
+        return;
+      }
+
+      const clampedRadius = Math.min(radius, width / 2, height / 2);
+
+      ctx.beginPath();
+      ctx.moveTo(x + clampedRadius, y);
+      ctx.lineTo(x + width - clampedRadius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + clampedRadius);
+      ctx.lineTo(x + width, y + height - clampedRadius);
+      ctx.quadraticCurveTo(
+        x + width,
+        y + height,
+        x + width - clampedRadius,
+        y + height,
+      );
+      ctx.lineTo(x + clampedRadius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - clampedRadius);
+      ctx.lineTo(x, y + clampedRadius);
+      ctx.quadraticCurveTo(x, y, x + clampedRadius, y);
+      ctx.fill();
     }
   }
 
