@@ -22,176 +22,749 @@
 
       <main class="content">
         <section>
-          <h2>How it works</h2>
+          <h2>About this demo</h2>
           <p>
-            The hose hangs in the fixed column and can be dragged around inside
-            it. While you hold the nozzle, water particles stream out, collide
-            with the mill, and turn that motion into page scroll.
-          </p>
-        </section>
-
-        <section>
-          <h2>Interaction</h2>
-          <p>
-            Pull the nozzle lower for a stronger stream. Water hitting the right
-            side of the mill turns it one way and scrolls down. Water hitting
-            the left side turns it back and scrolls up.
-          </p>
-          <p>
-            If you try to use the mouse wheel or keyboard instead, the page
-            shows a reminder to use the hose.
-          </p>
-        </section>
-
-        <section>
-          <h2>Demo content</h2>
-          <p>
-            This page is intentionally long so the custom scroll behavior has
-            room to breathe. The content is plain on purpose and meant only to
-            support testing the widget.
+            The hose hangs in a fixed column and can be dragged around inside
+            it. Water particles stream from the nozzle, collide with the mill,
+            and turn that motion into page scroll. Hitting the right side
+            scrolls down, the left side scrolls up, and pulling the nozzle lower
+            strengthens the stream. Native scrolling and keyboard navigation are
+            disabled while the demo is active. If you try either, the page will
+            remind you to use the hose. Rendering runs on a single canvas with
+            Matter.js handling hose and particle simulation. The widget fully
+            supports teardown via <code>destroy()</code>, rebuilds itself on
+            layout changes, and switches to a smaller floating layout when the
+            window is resized.
           </p>
         </section>
 
         <section>
           <h2>Ancient Origins: The Greek and Roman Wheels</h2>
           <p>
-            The earliest recorded watermills dates back to the 3rd century BCE,
-            appearing in the Hellenistic period. These initial designs were
-            <strong>horizontal wheels</strong>, often called "Norse mills,"
-            which featured a simple paddle wheel connected directly to a
-            millstone.
+            The earliest recorded watermills date back to the 3rd century BCE,
+            appearing during the Hellenistic period across the Greek-speaking
+            world. These initial designs were
+            <strong>horizontal wheels</strong>, often called "Norse mills" or
+            "Greek mills," which featured a simple paddle wheel mounted on a
+            vertical shaft connected directly to a millstone above. Water was
+            channeled through a wooden trough or flume and struck the paddles at
+            an angle, spinning the wheel and the stone together without need of
+            any gearing. Their construction required minimal materials and
+            little engineering sophistication, making them ideal for small
+            communities situated near fast-running mountain streams.
           </p>
           <p>
-            The Romans later perfected the <strong>vertical wheel</strong> using
-            gears to transfer power. This leap in engineering, famously
-            described by Vitruvius, allowed for much higher torque and
-            efficiency, paving the way for large-scale flour production across
-            the Roman Empire.
-          </p>
-        </section>
-
-        <section>
-          <h2>The Domesday Book and Medieval Proliferation</h2>
-          <p>
-            Following the fall of Rome, watermill technology didn't vanish; it
-            flourished. By the time of the <strong>Domesday Book</strong> in
-            1086, England alone recorded over 6,000 active watermills. They
-            became the heart of the medieval manorial economy.
+            The Romans later perfected the <strong>vertical wheel</strong>,
+            using right-angle gear trains to transfer rotational power from the
+            wheel's horizontal axle to a vertical shaft driving the millstone.
+            This engineering leap, famously described by the architect and
+            engineer Vitruvius in his treatise <em>De Architectura</em> around
+            25 BCE, allowed for far higher torque and grinding efficiency. The
+            vertical wheel could harness significantly more of a river's energy,
+            particularly when constructed as an <strong>overshot wheel</strong>,
+            where water was delivered to the top of the wheel from a millrace
+            and drove rotation through sheer gravitational weight rather than
+            just the impulse of the current.
           </p>
           <p>
-            During this era, the "overshot" wheel became more common. By using
-            gravity to pull water down onto the buckets of a wheel from above,
-            millers could generate significantly more power than the traditional
-            "undershot" design used in fast-flowing rivers.
-          </p>
-        </section>
-
-        <section>
-          <h2>Diversification of Use: Beyond Grain</h2>
-          <p>
-            By the 12th and 13th centuries, watermills were no longer just for
-            grinding corn. Engineers adapted the <strong>camshaft</strong> to
-            convert rotary motion into reciprocal motion. This led to the
-            creation of fulling mills for textiles, forge mills for ironworking,
-            and sawmills for timber.
+            The most celebrated example of Roman milling engineering was the
+            <strong>Barbegal mill complex</strong> near Arles in southern
+            France, constructed in the 2nd century CE. This remarkable
+            installation featured sixteen overshot wheels arranged in two
+            parallel descending rows on a hillside, fed by a branch of the
+            regional aqueduct system. Historians estimate it could produce
+            enough flour to supply tens of thousands of people, making it
+            arguably the largest concentration of industrial power in the
+            ancient world. The Barbegal complex demonstrates that the Romans
+            understood not merely the mechanics of the watermill but its
+            potential for centralized, large-scale production.
           </p>
           <p>
-            This period marked the first real "industrial revolution," where
-            human and animal labor were systematically replaced by hydraulic
-            power, fundamentally changing the landscape of European
-            manufacturing and labor.
-          </p>
-        </section>
-
-        <section>
-          <h2>The Industrial Revolution and the Iron Wheel</h2>
-          <p>
-            In the 18th century, John Smeaton applied scientific principles to
-            watermill design, proving through experimentation that
-            <strong>overshot wheels</strong> were far more efficient than
-            undershot ones. This led to the construction of massive iron wheels
-            that powered the early textile giants of the North of England.
-          </p>
-          <p>
-            The watermill provided the bridge to the modern age. Even as steam
-            engines began to take over, massive water-powered sites like Quarry
-            Bank Mill demonstrated the sheer scale of energy that could be
-            harvested from a controlled river.
+            Despite this sophistication, the adoption of watermills across the
+            Roman Empire remained uneven. Slave labor was abundant and cheap,
+            reducing the economic incentive to invest in mechanized milling
+            infrastructure. The watermill thus existed in an ambiguous position
+            during the Roman period, clearly understood and occasionally built
+            on an impressive scale, but not yet the transformative and universal
+            technology it would later become.
           </p>
         </section>
 
         <section>
-          <h2>The Transition to Hydroelectric Power</h2>
+          <h2>Independent Invention: Watermills Across Asia</h2>
           <p>
-            The final chapter in the history of the watermill is its evolution
-            into the <strong>water turbine</strong>. In the mid-19th century,
-            engineers like Benoît Fourneyron developed enclosed turbines that
-            could spin at high speeds with incredible efficiency.
+            The watermill was not solely a Mediterranean invention. Evidence
+            strongly suggests that <strong>horizontal-wheel mills</strong> were
+            developed independently in China no later than the 1st century CE,
+            and possibly earlier. Chinese engineers applied waterpower not only
+            to grain milling but to a remarkably diverse range of tasks. By the
+            2nd century CE, the inventor and engineer <em>Du Shi</em> had
+            applied water-powered bellows to blast furnaces for smelting iron,
+            one of the earliest recorded uses of hydraulic power for metallurgy
+            anywhere in the world. Later Chinese innovations would extend
+            waterpower to paper pulping, textile production, and the operation
+            of elaborate mechanical astronomical instruments.
           </p>
           <p>
-            This technology directly evolved into the hydroelectric dams we see
-            today. While the quaint wooden wheel in the river has mostly become
-            a relic of heritage, the fundamental principle of capturing the
-            kinetic energy of falling water remains a cornerstone of global
-            renewable energy.
-          </p>
-        </section>
-
-        <section>
-          <h2>More reading</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-            feugiat, tortor sed viverra pulvinar, tellus turpis semper sapien,
-            ut facilisis nisi risus id velit. Donec condimentum, turpis sed
-            tempus faucibus, lorem leo suscipit turpis, et posuere nisl lectus
-            quis lorem.
+            In the Indian subcontinent, horizontal mills known as
+            <em>ghatta</em> or <em>panchakki</em> were in widespread use across
+            hilly and mountainous regions, particularly in the Himalayan
+            foothills where fast-moving streams made them practical. These mills
+            fed communities for centuries and in some remote areas continue to
+            operate to this day. Persian engineers similarly developed the
+            <strong>vertical-axis windmill</strong> in parallel with watermills,
+            though the hydraulic mill was also prevalent across Persia and the
+            broader Islamic world, where it would later receive significant
+            theoretical and practical attention from medieval scholars.
           </p>
           <p>
-            Integer euismod, justo a feugiat efficitur, turpis risus ultrices
-            nunc, sit amet malesuada mi nisl vitae arcu. Sed at luctus mauris.
-            Pellentesque habitant morbi tristique senectus et netus et malesuada
-            fames ac turpis egestas.
-          </p>
-        </section>
-
-        <section>
-          <h2>Even more reading</h2>
-          <p>
-            Curabitur gravida ipsum sed erat tempor, vitae eleifend massa
-            luctus. Aliquam et enim non nibh iaculis tincidunt. Phasellus sit
-            amet turpis feugiat, vulputate lectus vel, malesuada ipsum. Cras
-            gravida nunc at purus pretium lacinia.
+            The independent and near-simultaneous development of watermill
+            technology across widely separated civilizations speaks to a
+            universal principle: wherever human communities encountered
+            swift-running water and the burden of manual grain grinding, they
+            reached toward the same mechanical solution. The watermill was not a
+            single invention that diffused outward from one origin, but a
+            technology whose time had come in multiple places at once.
           </p>
         </section>
 
         <section>
-          <h2>Notes</h2>
+          <h2>The Early Medieval Period: Slow Spread and Rural Necessity</h2>
           <p>
-            The widget uses a single canvas for rendering and Matter.js for hose
-            and particle simulation. The page disables native scrolling while
-            the demo is active.
+            With the decline of the Western Roman Empire in the 5th century CE,
+            the grand centralized mills of the Roman world largely fell into
+            disuse. Aqueducts were neglected, urban populations collapsed, and
+            the complex supply chains that had fed Roman cities dissolved. Yet
+            the watermill did not disappear. Instead it underwent a profound
+            democratization. Rather than massive industrial complexes, the early
+            medieval watermill was a
+            <strong>small, local, community institution</strong>, a single-wheel
+            mill built beside a village stream, owned by a monastery, a lord, or
+            occasionally a free community of peasants.
           </p>
           <p>
-            Resize the window to see the column switch to the smaller floating
-            layout.
+            Monasteries played an especially crucial role in preserving and
+            disseminating watermill technology throughout early medieval Europe.
+            The Benedictine Rule, with its emphasis on self-sufficiency and
+            manual labor, made the efficient processing of grain a spiritual as
+            well as a practical priority. Monastic communities built mills,
+            maintained them, and recorded their operation in chronicles and
+            charters that form some of our richest historical sources for the
+            period. The great abbey of <em>Fontenelle</em> in Normandy, for
+            example, had a watermill operating as early as the 7th century, and
+            similar records survive for institutions across France, the British
+            Isles, Germany, and northern Italy.
+          </p>
+          <p>
+            By the time of the Domesday Book in 1086, England alone recorded
+            <strong>over 6,000 watermills</strong>, roughly one for every fifty
+            households. This extraordinary density reveals that by the late 11th
+            century, the watermill had become thoroughly woven into the fabric
+            of rural European life. Almost no community of any size was without
+            one. The mill was where grain became flour, and flour became bread.
+            It stood at the very center of the food economy and, consequently,
+            at the center of social and economic power as well.
+          </p>
+          <p>
+            Ownership of a mill carried significant political weight. Lords who
+            controlled mills could compel their serfs to grind grain there and
+            collect a portion of the flour, a toll known as <em>multure</em>, as
+            payment. The mill thus became an instrument of feudal control, and
+            disputes over milling rights, water rights, and toll rates produced
+            a steady stream of legal conflicts throughout the medieval
+            centuries. To own a mill was to hold a form of monopoly over one of
+            life's most basic necessities.
           </p>
         </section>
 
         <section>
-          <h2>Implementation details</h2>
+          <h2>The Islamic Golden Age: Theory, Refinement, and Spread</h2>
           <p>
-            The script tracks its event listeners, supports full teardown
-            through `destroy()`, and rebuilds the simulation when the layout
-            changes.
+            While early medieval Europe was slowly rebuilding its milling
+            infrastructure at a local level, the Islamic world was advancing the
+            theoretical and practical understanding of hydraulic machinery with
+            remarkable energy. Scholars of the
+            <strong>Abbasid Caliphate</strong>, working in Baghdad and across
+            the broader Islamic empire from the 8th through 13th centuries,
+            translated and synthesized Greek mechanical knowledge while adding
+            substantial original contributions. The philosopher and engineer
+            <em>Al-Jazari</em>, writing in the early 13th century, produced his
+            landmark <em>Book of Knowledge of Ingenious Mechanical Devices</em>,
+            which described a wide range of water-powered machines including
+            sophisticated pumping engines, automata driven by waterwheels, and
+            systems for raising water for irrigation.
+          </p>
+          <p>
+            The Islamic world also extended the geographical reach of the
+            watermill significantly. Mills were built across Persia,
+            Mesopotamia, the Levant, North Africa, and into the Iberian
+            Peninsula following the Arab conquest of Spain. In regions where
+            rivers ran low or unpredictably, engineers devised innovative
+            solutions. <strong>Floating mills</strong> moored to riverbanks or
+            bridges, which rose and fell with the water level and could operate
+            even when the current was sluggish, became common on the Tigris,
+            Euphrates, and other major rivers. The city of <em>Mosul</em> on the
+            Tigris was noted by medieval travelers for the impressive number of
+            floating mills supplying its population.
+          </p>
+          <p>
+            The transmission of milling technology and hydraulic knowledge
+            between the Islamic world and Christian Europe occurred through
+            multiple channels, including the long land frontier in Iberia, the
+            exchange of ideas and artifacts during the Crusades, and the
+            mercantile networks of the Mediterranean. Norman Sicily, which had
+            passed through Arab rule before becoming a Norman kingdom, was a
+            particularly fertile zone of technological and intellectual
+            transfer, and mill designs from the Islamic world influenced
+            European practice in ways that are still being traced by historians.
           </p>
         </section>
 
         <section>
-          <h2>End of page</h2>
+          <h2>The High Medieval Explosion: Diversification of Power</h2>
           <p>
-            Keep dragging the hose to reach the bottom. This last section is
-            here mostly to make sure the mill has enough distance to scroll
-            through.
+            The 11th through 13th centuries witnessed what historians have
+            called the <strong>medieval industrial revolution</strong>, a rapid
+            and far-reaching expansion in the applications of waterpower that
+            transformed European economies. What had begun as a technology for
+            grinding grain evolved into a general-purpose power source
+            applicable to an astonishing variety of industrial tasks. The key
+            insight was simple but profound: the rotating axle of a waterwheel
+            could drive not only millstones but any mechanism that required
+            repetitive, sustained mechanical motion.
+          </p>
+          <p>
+            <strong>Fulling mills</strong> were among the earliest new
+            applications. Fulling, the process of beating and compressing woven
+            woolen cloth to thicken and strengthen it, had traditionally been
+            performed by workers treading cloth with their feet in large tubs of
+            water and urine. Water-powered fulling hammers, large wooden mallets
+            lifted by cams on the mill's axle and allowed to fall repeatedly
+            onto the cloth, accomplished the same work far more quickly and at
+            much lower labor cost. The adoption of fulling mills across England,
+            Flanders, and northern Italy during the 12th and 13th centuries was
+            a direct catalyst for the dramatic expansion of the wool and cloth
+            trades, industries that would shape European economies for
+            centuries.
+          </p>
+          <p>
+            <strong>Iron forges</strong> adopted waterpower for both bellows
+            operation and for powering heavy trip-hammers used to beat and shape
+            iron blooms fresh from the furnace. This dramatically increased the
+            scale at which iron could be produced and worked, reducing the cost
+            of iron tools and weapons and enabling more intensive agriculture
+            and more formidable armaments. <strong>Sawmills</strong> powered by
+            eccentric cranks that converted the wheel's rotation into the
+            back-and-forth motion of a saw blade began to appear across
+            timber-rich regions of northern and central Europe, dramatically
+            accelerating the processing of lumber for construction.
+            <strong>Paper mills</strong>, introduced to Europe via Islamic
+            Spain, used waterpower to drive stamping hammers that reduced rags
+            to the pulp from which paper was made, enabling cheaper and more
+            abundant writing materials and laying a crucial material foundation
+            for the later explosion of literacy and printing.
+          </p>
+          <p>
+            By the 13th century, the watermill had become the single most
+            important source of mechanical power in European civilization, and
+            its applications were still expanding. Tanning mills processed
+            leather. Grinding mills pulverized pigments for painters and
+            gunpowder ingredients for soldiers. Ore-crushing mills served mining
+            operations in the Alps and in central Europe. The wheel that had
+            once done nothing but grind grain now underpinned nearly every major
+            industry of the medieval world.
+          </p>
+        </section>
+
+        <section>
+          <h2>Engineering Advances: Wheel Types and Water Management</h2>
+          <p>
+            As the watermill proliferated and its applications diversified,
+            medieval and early modern engineers developed an increasingly
+            sophisticated understanding of how to maximize the power extracted
+            from flowing water. The central question was always the same: how
+            could a wheel and its associated infrastructure be designed to
+            capture as much of the water's energy as possible? The answer
+            depended on the character of the available water source, its flow
+            rate, its fall, and its seasonal variability, and led to three broad
+            categories of wheel design that would remain standard until the age
+            of the turbine.
+          </p>
+          <p>
+            The <strong>undershot wheel</strong> was the simplest and oldest
+            form. Water struck the paddles at the bottom of the wheel, propelled
+            by the velocity of the current alone. Undershot wheels required no
+            millrace or significant head of water and could be placed directly
+            in a river. However, they were relatively inefficient, capturing
+            perhaps fifteen to thirty percent of the water's available energy,
+            and their power output varied considerably with the river's flow.
+          </p>
+          <p>
+            The <strong>breastshot wheel</strong> represented a compromise.
+            Water was delivered to the wheel roughly at the level of its axle,
+            through a carefully designed sluice gate and millrace. The wheel's
+            compartments, or <em>buckets</em>, were shaped to retain the water
+            as it entered, so that both its weight and its velocity contributed
+            to turning the wheel. Breastshot wheels achieved efficiencies in the
+            range of fifty to sixty percent and were well-suited to rivers with
+            moderate fall.
+          </p>
+          <p>
+            The <strong>overshot wheel</strong> was the most powerful and
+            efficient configuration. Water was carried by a millrace or aqueduct
+            to a point above the wheel's top, where it poured into the buckets
+            and drove the wheel almost entirely by its weight as it descended.
+            Overshot wheels could achieve efficiencies approaching seventy to
+            ninety percent in favorable conditions and were preferred wherever a
+            sufficient head of water could be created or found. Constructing the
+            necessary millraces, weirs, and head ponds required substantial
+            engineering and capital investment, but the rewards in terms of
+            reliable, powerful output justified the expense for larger
+            operations.
+          </p>
+          <p>
+            Water management infrastructure grew accordingly complex.
+            <strong>Millponds</strong> impounded water during periods of low
+            flow, allowing mills to operate even when the river ran shallow.
+            Elaborate systems of weirs, sluice gates, and bypass channels
+            allowed millers to regulate the flow to their wheels and to divert
+            the river during maintenance. In some regions, entire river systems
+            were extensively modified to serve mill operations, with multiple
+            mills arranged in cascades along the same watercourse, each using
+            water that had already passed through the wheel above it. The
+            English River Kennet, the French River Loing, and dozens of other
+            modest streams were effectively transformed into industrial
+            corridors by the cumulative mill-building of medieval centuries.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Tidal Mill: Harnessing the Sea</h2>
+          <p>
+            One of the most ingenious adaptations of watermill technology was
+            the <strong>tidal mill</strong>, which exploited the predictable
+            rise and fall of the ocean tide rather than river flow. Tidal mills
+            were built at the mouths of estuaries or tidal creeks, where a dam
+            or causeway could be constructed across the waterway. As the tide
+            rose, water flowed through sluice gates into a millpond behind the
+            dam. When the tide fell and the millpond stood higher than the sea
+            outside, the gates were closed and the trapped water was released in
+            a controlled flow through the mill wheels. Typically a tidal mill
+            could operate for several hours in each tidal cycle, producing
+            reliable power on a schedule set by the moon rather than the
+            weather.
+          </p>
+          <p>
+            Tidal mills were particularly valuable in coastal regions where
+            rivers were too small, too shallow, or too variable to support
+            conventional mills. Evidence of tidal milling in Ireland dates to
+            the early 7th century CE, and examples have been documented on the
+            English, French, Breton, and Iberian Atlantic coasts throughout the
+            medieval period. The <strong>Eling Tide Mill</strong> in Hampshire,
+            England, operates on a site with a documented milling history
+            stretching back to the Domesday survey of 1086 and remains
+            functional today, making it one of the oldest continuously operating
+            mill sites in the world.
+          </p>
+          <p>
+            Tidal mills presented unique engineering challenges. The salt water
+            environment was harsh on wooden machinery, demanding frequent
+            maintenance and the use of rot-resistant timbers. The intermittent
+            nature of tidal power, predictable but not continuous, required
+            millers and their customers to adapt their working rhythms to the
+            tide table rather than the clock. Yet the tidal mill's independence
+            from rainfall and river conditions gave it a reliability that inland
+            mills sometimes lacked, and in well-situated coastal communities it
+            was a highly valued institution.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Early Modern Period: Scale, Drainage, and New Frontiers</h2>
+          <p>
+            The 15th through 17th centuries brought both a consolidation of
+            existing watermill technology and a series of dramatic new
+            applications that tested the limits of what hydraulic power could
+            accomplish. The most ambitious of these was the use of waterwheels
+            to drain mines and reclaim low-lying land from water, tasks that
+            required enormous and sustained mechanical effort far beyond what
+            human or animal labor could practically provide.
+          </p>
+          <p>
+            Mining operations in the silver and copper districts of central
+            Europe, in the Erzgebirge mountains of Saxony and Bohemia and in the
+            Tyrol, grew to unprecedented depth during the 15th and 16th
+            centuries, driven by the insatiable appetite of European rulers for
+            precious metals. As shafts descended deeper into the earth,
+            groundwater infiltration became an increasingly severe obstacle.
+            Vast networks of water-powered drainage pumps, driving chains of
+            suction and force pumps through complex mechanical linkages, were
+            installed to keep the mines workable. The mines of
+            <em>Schwaz</em> in the Tyrol and <em>Joachimsthal</em> in Bohemia
+            were among the greatest industrial enterprises of their age, and
+            their operation depended absolutely on waterpower.
+          </p>
+          <p>
+            In the low-lying coastal regions of the Netherlands, waterpower was
+            marshalled for the equally formidable task of draining polders,
+            tracts of land reclaimed from the sea and from inland lakes.
+            <strong>Scoop wheels</strong>, large paddle wheels arranged to lift
+            water rather than be driven by it, were powered by windmills in the
+            drier parts of the country and by waterwheels where river fall
+            permitted. The great drainage works of the 16th and 17th centuries,
+            which created hundreds of thousands of hectares of new agricultural
+            land from what had been open water or marsh, were among the most
+            impressive feats of hydraulic engineering in European history, and
+            they depended on a sophisticated understanding of watermill
+            mechanics accumulated over centuries.
+          </p>
+          <p>
+            The period also saw important advances in mill design and power
+            transmission. <strong>Gear trains</strong> became more elaborate,
+            allowing a single wheel to drive multiple sets of millstones or
+            multiple machines simultaneously. <strong>Camshafts</strong>, axles
+            fitted with projecting lobes that could operate hammers, stamps, or
+            bellows in coordinated sequences, grew more sophisticated.
+            Millwrights, the craftsmen who designed, built, and maintained
+            mills, developed into a distinct professional class whose knowledge
+            was highly technical, jealously guarded, and transmitted through
+            apprenticeship. The millwright was the mechanical engineer of the
+            early modern world.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Scientific Revolution and the Analysis of Waterpower</h2>
+          <p>
+            As the 17th century gave way to the 18th, the practical knowledge of
+            millwrights began to attract the attention of natural philosophers
+            and early engineers who wished to place the understanding of
+            waterpower on a rigorous scientific footing. The key questions were
+            economic as well as scientific: for a given flow of water with a
+            given fall, what wheel design would extract the maximum useful
+            power? The answer had enormous practical and financial consequences,
+            since a more efficient mill produced more flour, more cloth, or more
+            iron from the same water that was available.
+          </p>
+          <p>
+            The French scientist <em>Antoine Parent</em> made the first serious
+            theoretical analysis of the undershot wheel in 1704, concluding,
+            incorrectly as it turned out, that its maximum theoretical
+            efficiency was only about fifteen percent. More consequential was
+            the work of the British engineer <strong>John Smeaton</strong>, who
+            between 1752 and 1754 conducted meticulous experimental comparisons
+            of model undershot and overshot wheels under controlled conditions.
+            Smeaton's experiments, published by the Royal Society in 1759,
+            conclusively demonstrated that overshot wheels were substantially
+            more efficient than undershot wheels, providing empirical
+            justification for the engineering preference that experienced
+            millwrights had long held on intuitive grounds. Smeaton went on to
+            design and build some of the most powerful mills of his era, and his
+            systematic approach to engineering problems made him one of the
+            founders of civil engineering as a modern profession.
+          </p>
+          <p>
+            The French mathematician and physicist
+            <em>Jean-Victor Poncelet</em> later developed a refined undershot
+            wheel design in the early 19th century with curved vanes that
+            dramatically reduced energy losses as water entered and exited the
+            wheel, bringing the undershot wheel's efficiency close to that of
+            the overshot design. These theoretical and experimental advances
+            transformed the design of mill wheels from an art dependent on craft
+            tradition into a discipline grounded in measurable physical
+            principles.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Industrial Revolution: Waterpower at Its Peak</h2>
+          <p>
+            The late 18th century is popularly associated with the steam engine,
+            but for its first several decades the
+            <strong
+              >Industrial Revolution was powered overwhelmingly by water</strong
+            >. The great textile mills that transformed the economies of
+            Britain, New England, and parts of continental Europe were built on
+            riverbanks for a reason: fast-running water, carefully managed
+            through millraces, head ponds, and sophisticated gearing, provided
+            the cheap, reliable, and powerful mechanical energy that the new
+            spinning frames, power looms, and carding machines demanded.
+          </p>
+          <p>
+            <em>Richard Arkwright's</em> Cromford Mill in Derbyshire,
+            established in 1771 and powered by the River Derwent, is often cited
+            as the world's first true factory, a centralized installation where
+            multiple powered machines operated continuously, tended by a
+            disciplined workforce organized around the demands of the machinery
+            rather than the rhythms of craft production. Cromford was a
+            water-powered enterprise from its inception, and the mill buildings
+            survive today as a UNESCO World Heritage Site. The Derwent Valley as
+            a whole became a corridor of water-powered textile mills, and
+            similar concentrations appeared across the Pennines, in Scotland, in
+            the valleys of Wales, and across New England in the United States.
+          </p>
+          <p>
+            American industrialization in particular developed a distinctive and
+            highly sophisticated tradition of waterpower engineering. The
+            planned mill city of <strong>Lowell, Massachusetts</strong>,
+            established in the 1820s at the falls of the Merrimack River, was a
+            masterpiece of hydraulic engineering. A complex system of canals,
+            gates, and turbines distributed the river's power to dozens of
+            enormous textile mills employing thousands of workers. Lowell was
+            for a time the largest industrial city in the United States, and its
+            waterpower system was the envy of industrial visitors from around
+            the world.
+          </p>
+          <p>
+            During this period the traditional wooden waterwheel began to give
+            way to more advanced designs. <strong>Cast iron wheels</strong>,
+            which could be made larger and stronger than timber could allow,
+            appeared in the early 19th century. More revolutionary still was the
+            development of the enclosed water <strong>turbine</strong>, a
+            compact, fully submerged wheel whose curved vanes extracted energy
+            from water pressure rather than from the weight or impulse of an
+            open stream. The French engineer <em>Benoît Fourneyron</em> built
+            the first practical reaction turbine in 1827, achieving efficiencies
+            of over eighty percent and capable of operating at much higher
+            speeds than any traditional waterwheel. Turbines could also function
+            effectively with lower heads of water than overshot wheels required,
+            greatly extending the range of sites where high-efficiency
+            waterpower was feasible.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Turbine Age and the Transition to Hydroelectricity</h2>
+          <p>
+            The water turbine did not immediately displace the traditional
+            waterwheel. The two technologies coexisted throughout the 19th
+            century, with turbines gradually winning out in larger and more
+            capital-intensive installations while old-fashioned wheels continued
+            to serve smaller rural mills. But the turbine transformed the
+            potential of waterpower by making it applicable to a far wider range
+            of sites and, eventually, by making it the foundation of a new form
+            of energy altogether: <strong>electricity</strong>.
+          </p>
+          <p>
+            The connection between waterpower and electricity was first
+            demonstrated practically in 1882. Thomas Edison opened his Pearl
+            Street generating station in New York, a steam-powered facility, but
+            almost simultaneously H.J. Rogers commissioned the world's first
+            hydroelectric power plant on the Fox River in Appleton, Wisconsin.
+            Within a decade, hydroelectric stations were proliferating across
+            North America and Europe wherever suitable rivers and falls could be
+            found. The majestic cascade of <strong>Niagara Falls</strong> was
+            harnessed beginning in 1895, with generating equipment designed in
+            part by <em>Nikola Tesla</em> and built by Westinghouse, producing
+            electricity that was transmitted over long distances to power
+            Buffalo and eventually much of the northeastern United States.
+          </p>
+          <p>
+            The logic was compelling: falling water, which had turned wheels for
+            over two millennia, could now spin electromagnetic generators and
+            produce a form of energy that could be transmitted almost
+            instantaneously over wires to any destination. The mill, with its
+            fixed location beside a river, had always constrained the industries
+            it powered, requiring factories to cluster at the water's edge.
+            Hydroelectricity abolished this constraint. Power generated at a
+            remote waterfall could light a city a hundred miles away, run a
+            tramway, or drive the machinery of a factory built wherever labor,
+            raw materials, and markets converged rather than wherever rivers ran
+            fast.
+          </p>
+          <p>
+            The 20th century saw the construction of hydroelectric installations
+            of staggering scale. The <strong>Hoover Dam</strong> on the Colorado
+            River, completed in 1936, impounded a reservoir 185 kilometers long
+            and generated over 2,000 megawatts of electricity, enough to power
+            much of the American Southwest. The
+            <strong>Three Gorges Dam</strong> on China's Yangtze River,
+            completed in 2006, became the largest power station in the world by
+            installed capacity, generating approximately 22,500 megawatts. Both
+            dams descended intellectually, if not mechanically, from the same
+            principle that drove the horizontal paddle wheels of the 3rd century
+            BCE: the energy of falling water, captured and put to human use.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Village Mill as Social Institution</h2>
+          <p>
+            Amid the grand narrative of technological development, it is worth
+            pausing to consider what the watermill meant in the lives of the
+            ordinary people who depended on it. For the vast majority of the
+            mill's long history, it was not a factory or a power station but a
+            <strong>village institution</strong> as familiar and central as the
+            church or the market, a place where the community's grain was
+            transformed into food, where neighbors met, and where the economic
+            and social fabric of rural life was visibly expressed.
+          </p>
+          <p>
+            The miller occupied a peculiar and somewhat ambiguous social
+            position. He was an essential figure, as no community could do
+            without him, yet he was frequently regarded with suspicion. As the
+            man who measured and collected the multure toll, he had ample
+            opportunity to enrich himself at his customers' expense by
+            manipulating the scales or taking more than his rightful share of
+            the flour. The dishonest miller became a stock figure in medieval
+            and early modern literature. Geoffrey Chaucer's
+            <em>Miller's Tale</em> and <em>Reeve's Tale</em> both turn on themes
+            of cunning, deception, and barely concealed contempt between the
+            miller and those who depended on him. The proverb "no honest millers
+            have golden thumbs" captured a widespread folk belief that millers
+            systematically cheated their customers.
+          </p>
+          <p>
+            Yet the miller also possessed genuine skill and knowledge that
+            commanded respect. Keeping a watermill in good order required
+            mastery of carpentry, millstone dressing, gear maintenance, and the
+            subtle art of regulating the flow of water to the wheel. An
+            experienced miller could judge the quality of grain by its feel and
+            smell, adjust the gap between his stones to produce flour of the
+            desired fineness, and read the sounds of his machinery for signs of
+            imminent failure. This expertise was accumulated over years and
+            passed down through families, creating milling dynasties whose names
+            still survive in English surnames such as Miller, Milner, and
+            Millward, and their equivalents across European languages.
+          </p>
+          <p>
+            The mill itself was often a landmark around which communities
+            oriented themselves. Mills gave their names to villages, parishes,
+            roads, and fields. Millponds were swimming holes in summer and
+            skating rinks in winter. The sound of the wheel and the millstones
+            was the background music of rural life, as constant and natural as
+            the sound of the stream itself. When a mill fell silent through
+            disrepair, drought, or the departure of its miller, it was felt as a
+            kind of bereavement, a loss of something that had seemed as
+            permanent as the landscape.
+          </p>
+        </section>
+
+        <section>
+          <h2>Decline: Steam, Consolidation, and Abandonment</h2>
+          <p>
+            The rise of the <strong>steam engine</strong> over the course of the
+            19th century fundamentally altered the economics of milling. Steam
+            power was not dependent on rivers, rainfall, or geography. A
+            steam-powered mill could be built anywhere, in a port city where
+            grain ships docked, in a rail hub where wheat arrived from distant
+            prairies, or in an urban center close to its customers. It could
+            operate continuously regardless of drought or flood. And as the
+            century progressed, steam engines grew cheaper, more reliable, and
+            more fuel-efficient, narrowing and eventually eliminating the cost
+            advantage that free-flowing water had always provided.
+          </p>
+          <p>
+            The <strong>roller mill</strong>, developed in the 1870s and rapidly
+            adopted across Europe and North America, dealt a further blow to
+            traditional watermill operations. Roller mills used pairs of steel
+            cylinders rather than millstones to grind grain, producing the fine
+            white flour that consumers increasingly preferred. They could
+            process grain far more quickly than stone mills and were better
+            suited to the continuous, large-scale operations of the new steam-
+            and later electrically-powered urban flour factories. The giant
+            roller mills of Minneapolis, fed by hard spring wheat from the Upper
+            Midwest and powered first by the falls of the Mississippi at Saint
+            Anthony and later by steam and electricity, became for a time the
+            largest flour-milling complex in the world, supplying a national
+            market through the railroad network.
+          </p>
+          <p>
+            Against this competition, the traditional rural watermill was
+            helpless. One by one, across the 19th and early 20th centuries,
+            country mills closed their doors. The millstones fell silent, the
+            millraces silted up, and the mill buildings, whether stone, brick,
+            or timber-framed, began the long process of decay, conversion, or
+            preservation. By the mid-20th century, the working watermill had
+            become a rarity in most of the regions where it had once been
+            ubiquitous, persisting mainly in remote areas poorly served by rail
+            and road, or in countries where energy costs made hydroelectric
+            milling still economically viable.
+          </p>
+        </section>
+
+        <section>
+          <h2>Preservation, Heritage, and Revival</h2>
+          <p>
+            The disappearance of the working watermill as an economic
+            institution was accompanied, with a certain poignancy, by a growing
+            cultural appreciation for what was being lost. From the late 19th
+            century onward, artists, writers, and antiquarians began to
+            celebrate the watermill as an emblem of a pre-industrial world felt
+            to be vanishing. John Constable's luminous paintings of the mills
+            along the River Stour in Suffolk, among them <em>The Hay Wain</em>,
+            had already enshrined the mill in the English picturesque
+            imagination early in the 19th century. By the early 20th century,
+            preservationists were beginning to advocate for the physical
+            protection of historic mill buildings and machinery.
+          </p>
+          <p>
+            The latter half of the 20th century saw a significant and organized
+            effort to record, restore, and in some cases return to operation the
+            surviving watermills of Europe, North America, and beyond. National
+            mills organizations were founded in Britain, the United States, the
+            Netherlands, and many other countries. Volunteers learned the
+            almost-lost arts of millstone dressing, gear cutting, and sluice
+            construction. Hundreds of mills were returned to working order,
+            producing stone-ground flour for specialty markets that prized its
+            flavor and nutritional character, qualities that the fine-milled
+            white flour of industrial mills had long since abandoned.
+          </p>
+          <p>
+            Today, the working watermill survives in a dual role: as a
+            <strong>living museum</strong> of pre-industrial technology,
+            preserving skills and knowledge that would otherwise be entirely
+            lost, and as a small but real contributor to the renewed interest in
+            renewable and low-impact energy sources. Small-scale run-of-river
+            hydroelectric schemes, the direct descendants of the ancient mill
+            wheel, are increasingly attractive to off-grid homesteads, rural
+            communities, and sustainability-minded investors. The micro-hydro
+            turbine installed in a mountain stream to power a remote farm lodge
+            is the 21st-century reincarnation of the Norse mill that drove a
+            Highland village's quern two thousand years ago.
+          </p>
+        </section>
+
+        <section>
+          <h2>The Watermill's Legacy in the Modern World</h2>
+          <p>
+            Measured by the span of its active life, the watermill must be
+            counted among the most consequential technologies in human history.
+            For roughly two thousand years, from its earliest appearances in the
+            Hellenistic world to the dominance of steam in the 19th century, it
+            was the primary source of mechanical power available to
+            civilization. Its influence touched virtually every aspect of
+            material life: the food people ate, the cloth they wore, the iron
+            tools they worked with, the paper they wrote on, the buildings they
+            lived in, and the land they farmed. No other non-biological machine
+            served humanity for so long and so centrally before the fossil-fuel
+            age.
+          </p>
+          <p>
+            The watermill's legacy is embedded in the landscape in ways that are
+            easy to overlook. The millponds, weirs, and millraces that medieval
+            and early modern builders constructed have shaped watercourses
+            across Europe and North America in ways that persist to the present.
+            Many a picturesque pond beside a country road is a former millpond,
+            and many a gentle waterfall over a stone weir is a former milldam.
+            Place names encode the mill's former presence across dozens of
+            languages. Milton, Milford, Millbrook, Mühlheim, Molino — the mill
+            was so fundamental a feature of settlement that it entered geography
+            itself.
+          </p>
+          <p>
+            And the conceptual legacy may be deepest of all. The watermill was
+            humanity's first sustained engagement with the idea of
+            <strong>harnessing a natural process</strong>, the flow of water
+            downhill under gravity, to perform work without direct human or
+            animal effort. It embodied the insight, so central to engineering
+            and to the broader project of modern civilization, that nature
+            contains reservoirs of energy that patient and intelligent design
+            can redirect toward human purposes. Every wind turbine, every solar
+            panel, every hydroelectric dam stands in this lineage. The story of
+            energy in human history does not begin with coal and steam. It
+            begins with the sound of a wooden wheel turning in a cold mountain
+            stream, and the first grain falling between the stones.
           </p>
         </section>
       </main>
@@ -199,11 +772,7 @@
 
     <div id="watermill-column" aria-hidden="true"></div>
     <div id="wm-hint" class="wm-hint" aria-hidden="true">
-      <img
-        src="./assets/gemini.png"
-        alt=""
-        role="presentation"
-      />
+      <img src="./assets/gemini.png" alt="" role="presentation" />
       <p>Drag the hose to scroll</p>
     </div>
 
@@ -223,7 +792,7 @@
         window.watermillScroll = new window.WatermillScroll({
           columnWidth: "clamp(180px, 18vw, 220px)",
           smallScreenBreakpoint: 640,
-          scrollSensitivity: 8,
+          scrollSensitivity: 12,
           maxParticles: 300,
           maxScrollDeltaPerFrame: 60,
           angularDamping: 0.95,
