@@ -5,7 +5,7 @@
     desktopColumnWidthCss: "clamp(180px, 18vw, 220px)", // css length: default desktop column width for the fixed sidebar.
     smallScreenBreakpointPx: 640, // px: viewport width where the floating overlay layout activates.
     smallScreenColumnWidthCss: "100vw", // css length: overlay width on small screens so the widget spans the page width.
-    smallScreenColumnHeightCss: "100dvh", // css length: small-screen overlay height that tracks the visible mobile viewport.
+    smallScreenColumnHeightCss: "100dvh", // css length: fallback overlay height on small screens when live visual viewport metrics are unavailable.
     resizeDebounceMs: 150, // ms: delay before rebuilding the world after resize settles.
     engineGravityY: 0.62, // px/frame^2: vertical gravity strength used by Matter.js.
     hoseLinkCount: 16, // count: number of linked hose segments including the nozzle body.
@@ -518,11 +518,7 @@
     }
 
     registerResizeObserver() {
-      this.addTrackedListener(
-        window,
-        "resize",
-        this.scheduleRebuild.bind(this),
-      );
+      this.registerViewportResizeListeners();
 
       if (!window.ResizeObserver) {
         return;
@@ -533,6 +529,29 @@
       );
       this.resizeObserver.observe(this.layoutContainer);
       this.resizeObserver.observe(this.columnElement);
+    }
+
+    registerViewportResizeListeners() {
+      this.addTrackedListener(
+        window,
+        "resize",
+        this.scheduleRebuild.bind(this),
+      );
+
+      if (!window.visualViewport) {
+        return;
+      }
+
+      this.addTrackedListener(
+        window.visualViewport,
+        "resize",
+        this.scheduleRebuild.bind(this),
+      );
+      this.addTrackedListener(
+        window.visualViewport,
+        "scroll",
+        this.scheduleRebuild.bind(this),
+      );
     }
 
     addTrackedListener(target, type, handler, options) {
@@ -568,6 +587,7 @@
         this.layoutContainer.clientWidth < this.options.smallScreenBreakpoint;
 
       this.isSmallLayout = nextSmallLayout;
+      this.updateViewportCssVars();
       document.body.classList.toggle("wm-small-layout", nextSmallLayout);
       document.documentElement.style.setProperty(
         "--wm-column-width",
@@ -581,6 +601,46 @@
         "--wm-small-column-height",
         CONFIG.smallScreenColumnHeightCss,
       );
+    }
+
+    updateViewportCssVars() {
+      const viewportMetrics = this.getViewportMetrics();
+
+      document.documentElement.style.setProperty(
+        "--wm-visual-viewport-offset-top",
+        `${viewportMetrics.offsetTopPx}px`,
+      );
+      document.documentElement.style.setProperty(
+        "--wm-visual-viewport-height",
+        `${viewportMetrics.heightPx}px`,
+      );
+      document.documentElement.style.setProperty(
+        "--wm-visual-viewport-bottom-inset",
+        `${viewportMetrics.bottomInsetPx}px`,
+      );
+    }
+
+    getViewportMetrics() {
+      if (!window.visualViewport) {
+        return {
+          offsetTopPx: 0,
+          heightPx: window.innerHeight,
+          bottomInsetPx: 0,
+        };
+      }
+
+      const offsetTopPx = window.visualViewport.offsetTop;
+      const heightPx = window.visualViewport.height;
+      const bottomInsetPx = Math.max(
+        0,
+        window.innerHeight - (offsetTopPx + heightPx),
+      );
+
+      return {
+        offsetTopPx,
+        heightPx,
+        bottomInsetPx,
+      };
     }
 
     handleVisibilityChange() {
@@ -1416,6 +1476,15 @@
       document.body.classList.remove("watermill-active", "wm-small-layout");
       document.documentElement.style.scrollBehavior =
         this.previousScrollBehavior;
+      document.documentElement.style.removeProperty(
+        "--wm-visual-viewport-offset-top",
+      );
+      document.documentElement.style.removeProperty(
+        "--wm-visual-viewport-height",
+      );
+      document.documentElement.style.removeProperty(
+        "--wm-visual-viewport-bottom-inset",
+      );
     }
 
     removeCanvas() {
