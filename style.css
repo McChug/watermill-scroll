@@ -1,11 +1,7 @@
 :root {
   --wm-column-width: clamp(180px, 18vw, 220px);
   --wm-small-column-width: 100vw;
-  --wm-small-column-height: 100lvh;
-  --wm-visual-viewport-offset-top: 0px;
-  --wm-visual-viewport-height: 100dvh;
-  --wm-visual-viewport-bottom-inset: 0px;
-  --wm-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --wm-small-column-height: 100vh;
   --wm-border-color: #ccc;
 }
 
@@ -98,7 +94,6 @@ body.wm-small-layout .page-shell {
 body.wm-small-layout #watermill-column {
   left: 0;
   top: 0;
-  bottom: 0;
   width: var(--wm-small-column-width);
   height: var(--wm-small-column-height);
   opacity: 1;
@@ -148,7 +143,7 @@ body.wm-small-layout #watermill-column {
 body.wm-small-layout .wm-hint {
   top: auto;
   right: auto;
-  bottom: calc(var(--wm-safe-area-bottom) + 1rem);
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
 }
