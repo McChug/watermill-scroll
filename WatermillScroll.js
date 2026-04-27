@@ -5,7 +5,7 @@
     desktopColumnWidthCss: "clamp(180px, 18vw, 220px)", // css length: default desktop column width for the fixed sidebar.
     smallScreenBreakpointPx: 640, // px: viewport width where the floating overlay layout activates.
     smallScreenColumnWidthCss: "100vw", // css length: overlay width on small screens so the widget spans the page width.
-    smallScreenColumnHeightCss: "100vh", // css length: small-screen overlay height for the simplified full-screen mobile layout.
+    smallScreenColumnHeightCss: "100dvh", // css length: small-screen overlay height that tracks the visible mobile viewport.
     resizeDebounceMs: 150, // ms: delay before rebuilding the world after resize settles.
     engineGravityY: 0.62, // px/frame^2: vertical gravity strength used by Matter.js.
     hoseLinkCount: 16, // count: number of linked hose segments including the nozzle body.

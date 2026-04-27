@@ -1,7 +1,7 @@
 :root {
   --wm-column-width: clamp(180px, 18vw, 220px);
   --wm-small-column-width: 100vw;
-  --wm-small-column-height: 100vh;
+  --wm-small-column-height: 100dvh;
   --wm-border-color: #ccc;
 }
 
@@ -95,6 +95,7 @@ body.wm-small-layout #watermill-column {
   left: 0;
   top: 0;
   width: var(--wm-small-column-width);
+  height: 100vh;
   height: var(--wm-small-column-height);
   opacity: 1;
   border-left: 0;
