@@ -2,6 +2,9 @@
   --wm-column-width: clamp(180px, 18vw, 220px);
   --wm-small-column-width: 100vw;
   --wm-small-column-height: 100dvh;
+  --wm-visual-viewport-offset-top: 0px;
+  --wm-visual-viewport-height: 100dvh;
+  --wm-visual-viewport-bottom-inset: 0px;
   --wm-border-color: #ccc;
 }
 
@@ -93,10 +96,10 @@ body.wm-small-layout .page-shell {
 
 body.wm-small-layout #watermill-column {
   left: 0;
-  top: auto;
-  bottom: 0;
+  top: var(--wm-visual-viewport-offset-top);
+  bottom: auto;
   width: var(--wm-small-column-width);
-  height: var(--wm-small-column-height);
+  height: var(--wm-visual-viewport-height);
   opacity: 1;
   border-left: 0;
   border-top: 0;
@@ -144,7 +147,7 @@ body.wm-small-layout #watermill-column {
 body.wm-small-layout .wm-hint {
   top: auto;
   right: auto;
-  bottom: calc(var(--wm-small-column-height) + 1rem);
+  bottom: calc(var(--wm-visual-viewport-bottom-inset) + 1rem);
   left: 50%;
   transform: translateX(-50%);
 }
